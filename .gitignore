@@ -1,0 +1,9 @@
+# Database lokal (sensitif, jangan di-commit)
+db/*.db
+db/*.db-*
+db/*.sqlite*
+!db/.gitkeep
+
+# Log & temp
+*.log
+*.tmp

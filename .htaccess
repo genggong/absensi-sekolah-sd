@@ -1,0 +1,18 @@
+# Aplikasi Absensi SD — konfigurasi Apache
+# Semua request diarahkan ke index.php (front controller)
+
+RewriteEngine On
+RewriteBase /
+
+# Jangan rewrite file/folder yang benar-benar ada (assets, dll)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# Proteksi file sensitif
+<FilesMatch "\.(db|sqlite|sqlite3|log|ini)$">
+    Require all denied
+</FilesMatch>
+
+# Blokir akses langsung ke folder internal
+RedirectMatch 403 ^/(core|controllers|views|db)/
